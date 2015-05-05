@@ -1,0 +1,48 @@
+gsb_homepage:
+    path:   /index
+    defaults: { _controller:AheGsbBundle:Default:index }
+    
+gsb_homepage_visiteurs:
+    path:   /indexV
+    defaults: { _controller:AheGsbBundle:FraisVisiteurs:accueilVisiteurs }
+    
+gsb_homepage_comptable:
+    path:   /indexC
+    defaults: { _controller:AheGsbBundle:Comptable:listeVisiteursAccueilComptable }
+    
+gsb_saisie_fraisf:
+    path: /saisieFrais
+    defaults: { _controller:AheGsbBundle:FraisVisiteurs:saisirFraisForfait }
+    
+gsb_saisie_fraishf:
+    path: /saisieFraishf
+    defaults: { _controller:AheGsbBundle:FraisVisiteurs:saisirFraisHorsForfait }
+    
+gsb_valide_frais:
+    path: /valideFrais
+    defaults: { _controller:AheGsbBundle:FraisVisiteurs:validerFraisForfait }
+    
+gsb_consultation_frais:
+    path: /consultationFrais
+    defaults: { _controller:AheGsbBundle:FraisVisiteurs:consulterFrais }
+    
+gsb_consultation_Frais_Mois:
+    path: /listeFraisForfait
+    defaults: { _controller:AheGsbBundle:FraisVisiteurs:listerFraisForfait }
+    
+gsb_visiteurs_deconnexion:
+    path: /deconnexion
+    defaults: { _controller:AheGsbBundle:Default:seDeconnecter }
+    
+gsb_comptable_vueFraisVis:
+    path: /vueFrais/{idVis}
+    defaults: { _controller:AheGsbBundle:Comptable:listeFraisVis }
+    methods : POST
+    
+gsb_visiteurs_modfhf:  
+    path : /modfhf/{id}
+    defaults : { _controller:AheGsbBundle:FraisVisiteurs:modfhf }
+    
+gsb_maj_fhf: 
+    path: /majfhf
+    defaults: {_controller:AheGsbBundle:FraisVisiteurs:majfhf }

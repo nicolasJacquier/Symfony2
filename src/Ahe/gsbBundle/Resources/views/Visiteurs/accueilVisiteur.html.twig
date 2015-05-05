@@ -1,0 +1,56 @@
+{% extends "AheGsbBundle::layout.html.twig" %}
+{% block messages %}
+<div>
+    {% for flashMessage in app.session.flashbag.get('warning') %}
+        {{ flashMessage }}
+    {% endfor %}
+        
+</div>
+{% endblock %}
+
+{% block body %}
+<br>
+<div class="col-md-3">
+    <fieldset class="accueil">
+        <table>
+            <tr>
+                <td>
+                    <h2> Bienvenue {{ app.session.get('nom') }} 
+                       {{ app.session.get('prenom') }}
+                    </h2> 
+                </td>
+                <td>
+                    <h2> Application de Gestion des Fiches de Frais </h2>
+                </td>
+                <td>
+                    <h3><style type="text/css">a:link{text-decoration:none}</style> 
+                    <a  href="{{ path('gsb_visiteurs_deconnexion') }}" 
+                        accesskey=""title="Déconnexion">
+                        Se déconnecter
+                    </a> 
+                    </h3>
+                </td>
+            </tr>
+        </table>
+        
+            
+    </fieldset>
+        
+    <div class="menu">
+        <ul class="nav">
+            <li> <a  href="{{ path('gsb_consultation_frais') }}"
+                    title="Consultation"><h4>Consulter mes fiches de frais</h4>
+                 </a>
+            </li>
+              
+            <li> <a href="{{ path('gsb_saisie_fraisf') }}"><h4>Saisir une fiche de frais forfaitisés</h4>
+                 </a> 
+            </li>
+            <li> <a href="{{ path('gsb_saisie_fraishf') }}"><h4>Saisir une fiche de frais hors forfait</h4>
+                 </a>
+            </li>
+        </ul>
+    </div>
+  </div>
+
+{% endblock %}

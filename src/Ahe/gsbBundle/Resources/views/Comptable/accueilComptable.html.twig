@@ -1,0 +1,78 @@
+{% extends "AheGsbBundle::layout.html.twig" %}
+{% block messages %}
+    <div>
+        {% for flashMessage in app.session.flashbag.get('warning') %}
+            {{ flashMessage }}
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block body %}
+    <br>
+    <div >
+        
+            <button><a href="{{ path('gsb_visiteurs_deconnexion') }}" 
+                                                       accesskey=""title="Déconnexion">
+                    Se déconnecter
+                </a></button>
+            <h2> Bienvenue {{ app.session.get('nom') }} 
+                {{ app.session.get('prenom') }}
+            </h2>
+            <hr>
+            <h3> Gestion des Fiches de Frais COMPTABLE </h3>
+            <table style="text-align: center;">
+             
+                <thead>
+
+                    
+                    <th>
+                        Nom
+                    </th>
+                    <th>
+                        Prénom
+                    </th>
+                    <th>
+                        Adresse
+                    </th>
+                    <th>
+                        Code Postal
+                    </th>
+                    <th>
+                        Ville
+                    </th>
+                    <th>
+                        Date Embauche
+                    </th>
+                    <th>
+                        Choix
+                    </th>
+                </thead>
+            <!--<meta http-equiv=Content-Type content="text/html; charset=utf-8" />  -->
+            <tbody>
+                {% for visiteur in listeVisiteur %}
+                    
+                    
+                <tr>
+                    
+                    <td>{{ visiteur['nom'] }}</td>
+                    <td>{{ visiteur['prenom'] }}</td>
+                    <td>{{ visiteur['adresse'] }}</td>
+                    <td>{{ visiteur['cp'] }}</td>
+                    <td>{{ visiteur['ville'] }}</td>
+                    <td>{{ visiteur['dateEmbauche'] }}</td>
+                    
+                    <td>
+                       <form action="{{ path('gsb_comptable_vuFraisVis',{'idVis':'visiteur.id'}) }}" method="POST">
+                            <button type='submit'>Voir</button>
+                       </form>
+                    </td>
+                    
+                </tr>
+                {% else %}
+                    - liste vide -
+                {% endfor %}
+            </tbody>
+        </table>
+       
+    </div>
+
+{% endblock %}

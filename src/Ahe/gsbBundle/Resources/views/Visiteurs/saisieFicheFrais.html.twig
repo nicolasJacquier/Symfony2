@@ -1,0 +1,58 @@
+{% extends "AheGsbBundle::layout.html.twig" %}
+{% block body %}
+    {% block bloc1 %}
+        {% include 'AheGsbBundle:Visiteurs:erreurs.html.twig' with {'lesErreurs':lesErreursForfait } %}
+
+        <h2> Fiche de frais du mois {{numMois}}-{{numAnnee}}</h2>
+      
+            <div class="corpsForm">  
+                  
+                <fieldset>
+                    <legend>Frais hors forfait : </legend>
+                    <table border='1' style='width: 50%;text-align: center'>
+                        <tr>
+                            <th>date </th>
+                            <th> Libéllé</th>
+                            <th>Montant</th>
+                            <th>Action</th>
+                        </tr>
+
+
+                        {% for item in fhf %}
+                            <tr>
+                                <td> {{item['date']|date('d-m-Y')}}</td>
+                                <td> {{item['libelle']}}</td>
+                                <td> {{item['montant']}}</td>
+                                <td> 
+                                    <table border="1" style='width: 100%;text-align: center;'> 
+                                        <tr>
+                                            <td>
+                                                <a href="{{ path('gsb_visiteurs_mod_FhF', {'id': item['id'] }) }}" accesskey=""title="Déconnexion">Modifier</a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ path('gsb_visiteurs_sup_FhF',{'id': item['id'] }) }}" onClick="return confirm('Voulez-vous vraiment supprimer ce frais ?  ');" accesskey="" title="Suppression">Supprimer </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            <tr>
+                                {%else%}
+                                <tr><td colspan="4" style='text-align:center;font:18px Arial bold;'>Vous n'avez pas de frais hors forfait </td></tr>
+                            {%endfor%}
+                    </table>
+                    <hr>
+                    {{form(form)}}
+                </fieldset>
+                  <br/>
+
+        <a href = "{{ path('gsb_homepage_visiteurs') }}"> 
+            Accueil Visiteurs
+        </a>
+               
+            </div>    
+        
+
+        <a href="/">  </a>
+    </div>
+{% endblock %}
+{% endblock %}  
